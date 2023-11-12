@@ -78,3 +78,35 @@ Main code
             Break from the loop and stop
 
 ```
+
+## Flowchart
+----------------------
+
+![assignement_flowchart](https://github.com/AmaniGhm/RT_Assignment1_Amani_Ghomrani/assets/125284569/8241d46c-8a65-4770-b43b-0cea662ed5ea)
+
+
+## How to RUN the code
+-----------------------------
+
+After cloning the repositoriy on your machine, you need to navigate to the folder "robot-sim". then you are able to run the code.
+To run the script in the simulator, use `run.py`, passing it the file names. 
+
+you can run the program with:
+
+```bash
+$ python run.py assignment.py
+```
+
+If you want to check the code you can use `gedit` to see the code structure.
+
+Use the following line :
+
+```bash
+$ gedit assignment.py
+```
+
+## Future improvements
+-----------------------------
+
+The code can be optimized by having the robot initially pick up the reference token (Box) and bring it to the center before proceeding to search for other tokens.
+In this way, the robot minimizes the time spent searching for the remaining tokens, as positioning itself in the middle ensures that all tokens are within its field of view.
