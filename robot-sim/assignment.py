@@ -2,9 +2,18 @@ from __future__ import print_function
 import time
 from sr.robot import *
 
+""" Initialisation of the list of markers the robot has already picked"""
+
 picked_up_markers = []
+
+""" reference token is the token the robot is programmed to gather the rest of the tokens at"""
+
 reference_token = None
+
+""" ref_token_code is an alternative of using reference_token.info.code """
 ref_token_code = 0
+
+""" The threshold distance and angle, if the robot is at this distance from the token it can grab it """
 
 a_th = 2.0
 d_th = 0.4
@@ -25,6 +34,13 @@ def turn(speed, seconds):
     R.motors[0].m0.power = 0
     R.motors[0].m1.power = 0
 
+"""  The " find_token() "  function is used to make the robot look for tokens, it returns the 
+
+    * dist: the distance of the token from the robot's center
+    * rot_y: the angle in which the token is at from the y axes with respect to the robot
+    * marker: the selected marker
+"""
+
 def find_token():
     global picked_up_markers, ref_token_code
     dist = 100
@@ -32,7 +48,7 @@ def find_token():
 
     while len(markers) == 0:
         turn(-25, 0.7)
-        print("I have turned to the left to look for markers")
+        print("I have turned to the left to look for markers !")
         markers = R.see()
 
     print("I can see", len(markers), "markers:")
@@ -52,6 +68,10 @@ def find_token():
     else:
         return marker, dist, rot_y
 
+""" The " save_reference_token() " is called first in the main code to pick one of the tokens as reference
+    - saves the data in the reference_token variable for later calculations
+"""
+
 def save_reference_token():
     global reference_token, ref_token_code
     marker, _, _ = find_token()
@@ -61,6 +81,10 @@ def save_reference_token():
         print("Reference token saved:", ref_token_code)
     else:
         print("No token found to save as reference.")
+
+""" The " displace_token() " function is called when robot is grabing one token, the purpose of this function is:
+    - To displace the grabbed token to the reference token.
+"""
 
 def displace_token():
     global reference_token
@@ -103,9 +127,13 @@ def displace_token():
         displace_token()
 
 
-# Main code
+"""                              Main code                                 """                    
+
+
 print("I am starting the main code")
+
 save_reference_token()
+
 print("The reference token is:", reference_token)
 
 while True:
@@ -122,7 +150,7 @@ while True:
             displace_token()
             drive(-40, 2.5)
             turn(-30, 2)
-            picked_up_markers.append(token.info.code)
+            picked_up_markers.append(token.info.code) # after releasing the token besides the ref_token, it gets appended to the picked markers list, so for later search it doesn't get picked up by the robot again 
             print("The picked up markers", picked_up_markers)
 
     else:
@@ -138,5 +166,5 @@ while True:
         print("Right a bit...")
         turn(2, 0.5)
     if len(picked_up_markers) == 5:
-    	print("AAAAND I'm done! time to rest")
+    	print("AAAAND I'm done! Finally time to rest")
     	break
