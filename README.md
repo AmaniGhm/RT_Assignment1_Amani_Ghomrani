@@ -82,7 +82,7 @@ Main code
 ## Flowchart
 ----------------------
 
-![assignement_flowchart](https://github.com/AmaniGhm/RT_Assignment1_Amani_Ghomrani/assets/125284569/8241d46c-8a65-4770-b43b-0cea662ed5ea)
+![assignement_flowchart](https://github.com/AmaniGhm/RT_Assignment1_Amani_Ghomrani/assets/125284569/e5ce75f9-656c-4ab8-a771-894c4a4626e6)
 
 
 ## How to RUN the code
