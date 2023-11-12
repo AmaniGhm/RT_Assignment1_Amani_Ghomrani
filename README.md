@@ -6,10 +6,6 @@ The solution demonstrates a basic robotic navigation and manipulation behavior, 
 ----------------------
 
 ```bash
-# RT_Assignment1_Amani_Ghomrani
-
-# Pseudo code of the program
-
 Initialize picked_up_markers list
 Initialize reference_token and ref_token_code
 
@@ -40,7 +36,7 @@ Function save_reference_token()
     Call find_token()
     If marker is found
         Save marker as reference_token
-        Save marker's code as ref_token_code
+        Save marker s code as ref_token_code
         Print "Reference token saved:" and ref_token_code
     Else
         Print "No token found to save as reference."
@@ -74,7 +70,7 @@ Main code
             If token is grabbed
                 take the held token to reference token using displace_token() function
                 move back and turn
-                Add token's code to picked_up_markers
+                Add token s code to picked_up_markers
         Else
             continue to loop
         move towards the tergeted token
